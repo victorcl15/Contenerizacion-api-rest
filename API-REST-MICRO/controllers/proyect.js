@@ -60,6 +60,7 @@ const createProyecto = async (req = request, res = response) => {
  * Consultar todos
  */
 const getProyectos = async (req, res = response) => {
+    console.log("Obteniendo proyectos");
     try{
         const proyectsBD = await Proyect.find()
         .populate({

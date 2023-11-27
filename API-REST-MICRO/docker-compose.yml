@@ -6,8 +6,43 @@ services :
     build :
       context : .
     ports : 
-      - "4038:4038"
+      - "4038"
     networks : 
       - proyectos-app
+
+  proyectos-micros-2 : 
+    container_name : proyectos-micros-2
+    image : proyectos-micros:v1
+    ports : 
+      - "4038"
+    networks : 
+      - proyectos-app
+
+  proyectos-micros-3 : 
+    container_name : proyectos-micros-3
+    image : proyectos-micros:v1
+    ports : 
+      - "4038"
+    networks : 
+      - proyectos-app
+
+  proyectos-micros-4 : 
+    container_name : proyectos-micros-4
+    image : proyectos-micros:v1
+    ports : 
+      - "4038"
+    networks : 
+      - proyectos-app
+
+  loader-balancer:
+    container_name : loader-balancer
+    image: loader-balancer:v1
+    build : 
+      context : ./loader-balancer
+    ports : 
+      - "4039:80"
+    networks : 
+      - proyectos-app
+
 networks : 
   proyectos-app :  
